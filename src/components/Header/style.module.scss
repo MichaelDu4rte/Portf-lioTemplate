@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Rubik:wght@400&display=swap");
+
+.link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 60px;
+  font-weight: lighter;
+}
+
+.header {
+  padding: 30px;
+  position: fixed;
+  right: 0;
+  z-index: 100000;
+
+  .button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #455ce9;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .burger {
+    width: 100%;
+    &::after,
+    &::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 40%;
+      margin: auto;
+      background-color: white;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    &::after {
+      top: -5px;
+    }
+
+    &::before {
+      top: 5px;
+    }
+  }
+
+  .burgerActive {
+    &::after {
+      transform: rotate(45deg);
+      top: -1px;
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+      top: 0px;
+    }
+  }
+}
+
+.logo,
+.menuLogo {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+}
+
+.logo .link {
+  color: #000;
+}
+
+.menuLogo .link {
+  color: #fff;
+}
+
+.menuToggle {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  width: 120px;
+  height: 60px;
+  background-color: #455ce9;
+  border-radius: 8em;
+  transition: width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform-origin: right;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.menuToggleIcon {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  clip-path: circle(10% at 50% 50%);
+  background-color: #fff;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 10;
+  overflow: hidden;
+
+  .hamburger {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    opacity: 0;
+  }
+}
+
+.menuToggle:hover .menuToggleIcon {
+  clip-path: circle(35% at 50% 50%);
+}
+
+.menuToggle:hover .hamburger,
+.menuToggle.opened .hamburger {
+  top: 50%;
+  opacity: 1;
+}
+
+.menuToggle.opened .menuToggleIcon {
+  clip-path: circle(50% at 50% 50%);
+  transform: scale(1.125);
+}
+
+.menuToggle.opened {
+  width: 60px;
+}
+
+.menuToggle.opened .menuCopy {
+  opacity: 0;
+}
+
+.menuToggle:hover .menuCopy {
+  left: 20px;
+}
+
+.menuCopy {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  color: #fff;
+  transition: left 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 1;
+
+  p {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.menuBar {
+  position: absolute;
+  width: 15px;
+  height: 1.5px;
+  background-color: #000;
+  transition-property: transform;
+  transition: all 250ms ease-out;
+}
+
+.menuBar[data-position="top"] {
+  transform: translateY(-3px);
+}
+
+.menuBar[data-position="bottom"] {
+  transform: translateY(3px);
+}
+
+.menuToggle.opened .menuBar[data-position="top"] {
+  transform: translate(0) rotate(45deg) scaleX(1.05);
+}
+
+.menuToggle.opened .menuBar[data-position="bottom"] {
+  transform: translate(0) rotate(-45deg) scaleX(1.05);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+  height: 100vh;
+  min-height: 700px;
+  background-color: #141516;
+  padding: 20px;
+
+  h1,
+  h2,
+  h3,
+  p {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-family: "Rubik", sans-serif;
+    font-size: 48px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 30px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  h3,
+  p {
+    font-family: "Roboto Mono", monospace;
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  .sectionTitle {
+    margin-bottom: 40px;
+  }
+
+  .hero {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+
+    &.hero-3d {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+
+      &:hover {
+        transform: rotateY(10deg) rotateX(5deg);
+      }
+    }
+  }
+
+  span {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  a {
+    width: fit-content;
+    align-self: center;
+  }
+
+  button {
+    background-color: #455ce9;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    width: 160px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+    cursor: pointer;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .colorModeContainer {
+    position: relative;
+  }
+
+  .colorMode {
+    position: absolute;
+    right: 0;
+    width: 30px;
+  }
+
+  .colorMode:hover {
+    cursor: pointer;
+  }
+
+  .description {
+    max-width: 40ch;
+    color: grey;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media (min-width: 800px) {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .hero {
+      max-width: 400px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .hero {
+      max-width: 450px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    display: none;
+  }
+}
